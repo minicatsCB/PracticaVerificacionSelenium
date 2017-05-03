@@ -1,3 +1,4 @@
+from CountWords import CountWords
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
@@ -9,8 +10,15 @@ def hello():
 @app.route('/signup', methods = ['POST'])
 def signup():
 	if request.method == 'POST':
+		# First, obtain the introduced text through the form
 		result = request.form
-		return render_template('result.html', result = result)
+		text_to_analyze = result['textArea']
+		# Proccess the text
+		cw = CountWords(text_to_analyze)
+		words = cw.text_analyzer()
+		print words
+		# Pass the text to the template in order to be showed in the screen
+		return render_template('result.html', result = words)
 
 
 if __name__ == "__main__":
