@@ -17,18 +17,20 @@ from selenium.common.exceptions import NoSuchElementException
 
 @step('The textfield in blank')
 def have_the_textfield_in_blank(step):
-	world.browser.get("http://www.google.es")
-	text_field = world.browser.find_element_by_id("lst-ib")
+	world.browser.get("http://127.0.0.1:5000")
+	text_field = world.browser.find_element_by_id("textArea")
 	assert True, text_field.get_attribute('value') == ""
 	
 
 @step('I enter the sentence "([^"]*)"')
 def enter_the_sentence(step, expected):
-	text_field = world.browser.find_element_by_id("lst-ib")
+	text_field = world.browser.find_element_by_id("textArea")
 	text_field.send_keys(expected)
 
 @step('I see "([^"]*)" in the textfield')
 def check_sentence(step, expected):
-	text_field = world.browser.find_element_by_id("lst-ib")
+	if(len(expected) > 100):
+		expected = str(expected[0:99])
+	text_field = world.browser.find_element_by_id("textArea")
     	assert True, text_field.get_attribute('value') == expected
 
