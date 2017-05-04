@@ -1,4 +1,4 @@
-Feature: Push Reset
+Feature: Press Reset button
     In order to comprobate that reset
     As a user
     I want to delete the text in textfield
