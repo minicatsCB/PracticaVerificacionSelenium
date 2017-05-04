@@ -7,7 +7,7 @@ app = Flask(__name__)
 def hello():
 	return render_template('form.html')
 
-@app.route('/signup', methods = ['POST'])
+@app.route('/', methods = ['POST'])
 def signup():
 	if request.method == 'POST':
 		# First, obtain the introduced text through the form
@@ -18,7 +18,7 @@ def signup():
 		words = cw.text_analyzer()
 		print words
 		# Pass the text to the template in order to be showed in the screen
-		return render_template('result.html', result = words)
+		return render_template('form.html', result = words)
 
 
 if __name__ == "__main__":
