@@ -1,4 +1,4 @@
-Feature: Push In
+Feature: Press Execute button
     Execute order to comprobate that execute
     As a user
     I want to count the words in the textfield
